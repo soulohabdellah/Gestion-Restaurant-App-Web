@@ -9,6 +9,11 @@
       
     </head>
     <body class="antialiased">
-     
+    @if(DB::connection()->getDatabaseName())
+    <p>Connexion à la base de données réussie.</p>
+    @else
+    <p>La connexion à la base de données a échoué.</p>
+    @endif
+
     </body>
 </html>
