@@ -7,7 +7,9 @@ use App\Models\Produit;
 class ProduitController extends Controller
 {
     function getProduits(){
-        return Produit::all();
+        $listProduits= Produit::all();
+        return view('home')->with('listProduits', $listProduits);
+
 
     }
 }
