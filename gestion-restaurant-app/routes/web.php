@@ -18,3 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/home', [ProduitController::class, 'getProduits']);
+Route::get('/produit/{id}', [ProduitController::class, 'getProduit']);
+

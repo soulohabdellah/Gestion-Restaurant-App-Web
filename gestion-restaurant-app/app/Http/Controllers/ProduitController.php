@@ -12,4 +12,11 @@ class ProduitController extends Controller
 
 
     }
+    function getProduit($id_produit){
+        $produit = Produit::find($id_produit);
+        return view('produit')->with('produit', $produit);
+      
+
+
+    }
 }

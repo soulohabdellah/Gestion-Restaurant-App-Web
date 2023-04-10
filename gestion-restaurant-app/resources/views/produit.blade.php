@@ -23,7 +23,7 @@
 
 <div class="container">
 <div class="row">
-@foreach ($listProduits as $produit)
+
   <div class="col-sm-3">
    <div class="card" >
    <img src="{{ $produit->image }}" class="card-img-top custom-img-size" alt="...">
@@ -36,7 +36,7 @@
   </div>
 </div>
   </div>
-  @endforeach
+
 
 
 </div>

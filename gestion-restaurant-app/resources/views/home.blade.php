@@ -28,7 +28,7 @@
    <div class="card" >
    <img src="{{ $produit->image }}" class="card-img-top custom-img-size" alt="...">
   <div class="card-body">
-    <a href="produit/{{$produit->id_produit}}"><h5 class="card-title">{{ $produit->nom }}</h5></a>
+    <a href="/produit/{{$produit->id_produit}}"><h5 class="card-title">{{ $produit->nom }}</h5></a>
     <p class="card-text">Prix : <strong>{{ $produit->prix }} DH </strong></p>
       <p class="card-text">Quantite : {{ $produit->count_in_stock }}</p>
 
