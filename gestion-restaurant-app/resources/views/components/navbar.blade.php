@@ -29,8 +29,9 @@
           <a class="nav-link" href="#">Contact</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Panier</a>
+        <a class="nav-link" href="#">Panier<span id="nombreProduit" class="badge rounded-pill bg-primary ms-1">0</span></a>
         </li>
+        
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Rechercher un plat ou un ingrédient" aria-label="Search">
