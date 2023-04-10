@@ -51,20 +51,25 @@
 <script>
   //localStorage.clear();
   
-  function addToPanier(idProduit) {
+  function addToPanier(idProduit, quantite = 1) {
     let panier = localStorage.getItem('panier');
     if (!panier) {
       panier = []; 
     } else {
       panier = JSON.parse(panier); 
     }
-    if (!panier.includes(idProduit)) { 
-      panier.push(idProduit); 
-      localStorage.setItem('panier', JSON.stringify(panier)); 
+    let produit = { id: idProduit, quantite: quantite };
+    let index = panier.findIndex(p => p.id === idProduit);
+    if (index >= 0) { 
+      panier[index].quantite += quantite; 
+    } else { 
+      panier.push(produit); 
     }
-    let nbItems = panier.length;
+    localStorage.setItem('panier', JSON.stringify(panier)); 
+    let nbItems = panier.reduce((total, p) => total + p.quantite, 0);
     modifierPanier(nbItems);
-  }
+}
+
   
   function modifierPanier(nbItems) {
     document.getElementById('nombreProduit').textContent = nbItems;
