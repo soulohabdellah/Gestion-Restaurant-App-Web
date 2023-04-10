@@ -49,7 +49,6 @@
 @include('components\footer')
 
 <script>
-  //localStorage.clear();
   
   function addToPanier(idProduit, quantite = 1) {
     let panier = localStorage.getItem('panier');
@@ -61,35 +60,30 @@
     let produit = { id: idProduit, quantite: quantite };
     let index = panier.findIndex(p => p.id === idProduit);
     if (index >= 0) { 
-      panier[index].quantite += quantite; 
+     return;
     } else { 
       panier.push(produit); 
     }
+ 
     localStorage.setItem('panier', JSON.stringify(panier)); 
-    let nbItems = panier.reduce((total, p) => total + p.quantite, 0);
-    modifierPanier(nbItems);
+
+    modifierPanier();
 }
 
   
-  function modifierPanier(nbItems) {
+  function modifierPanier() {
+    let panier = localStorage.getItem('panier');
+    let nbItems = 0;
+    if (panier) {
+      nbItems = JSON.parse(panier).length;
+    }
     document.getElementById('nombreProduit').textContent = nbItems;
   }
   
-  let panier = localStorage.getItem('panier');
-  if (panier) {
-    let nbItems = JSON.parse(panier).length;
-    modifierPanier(nbItems);
-  }
+
+    modifierPanier();
+  
 </script>
-
-
-
-
-
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
