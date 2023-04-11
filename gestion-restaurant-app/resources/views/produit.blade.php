@@ -37,7 +37,7 @@
           <i class="fas fa-shopping-cart mr-2"></i>
           Ajouter au panier
         </button>
-        <button class="btn btn-outline-primary">
+        <button onClick="goToPanier()" class="btn btn-outline-primary">
           <i class="far fa-heart mr-2"></i>
           Aller au panier
         </button>
@@ -54,7 +54,9 @@
 
 <script>
   //localStorage.clear();
-  
+  function goToPanier(){
+    
+  }
   function addToPanier(idProduit) {
     let panier = localStorage.getItem('panier');
     if (!panier) {
