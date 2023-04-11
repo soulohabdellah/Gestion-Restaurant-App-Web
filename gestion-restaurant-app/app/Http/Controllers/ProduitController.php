@@ -8,13 +8,18 @@ class ProduitController extends Controller
 {
     function getProduits(){
         $listProduits= Produit::all();
-        return view('home')->with('listProduits', $listProduits);
+        return view('menu')->with('listProduits', $listProduits);
 
 
     }
     function getProduit($id_produit){
         $produit = Produit::where('id_produit', $id_produit)->first();
         return view('produit')->with('produit', $produit);
+      
+    }
+    function getPanier(){
+        $listProduits= Produit::all();
+        return view('panier')->with('produit', $listProduits);
       
     }
 }

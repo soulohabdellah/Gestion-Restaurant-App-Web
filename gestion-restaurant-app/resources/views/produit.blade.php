@@ -18,31 +18,35 @@
   </head>
   <body>
   @include('components\navbar')
-
-
-
-<div class="container">
-<div class="row">
-
-  <div class="col-sm-6">
-   <div class="card" >
-   <img src="{{ $produit->image }}" class="card-img-top custom-img-size" alt="...">
-  <div class="card-body">
-    <a href="produit/{{$produit->id_produit}}"><h5 class="card-title">{{ $produit->nom }}</h5></a>
-    <p class="card-text">Prix : <strong>{{ $produit->prix }} DH </strong></p>
-      <p class="card-text">Quantite : {{ $produit->count_in_stock }}</p>
-      <p class="card-text">Description : {{ $produit->description }}</p>
- <a onClick="addToPanier({{ $produit->id_produit }})" class="btn btn-primary">Ajouter au panier</a>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{ $produit->image }}" alt="Product Image" class="img-fluid">
+      </div>
+      <div class="col-md-6">
+        <h3 class="mb-4">{{ $produit->nom }}</h3>
+        <p class="text-muted mb-4">{{ $produit->description }}</p>
+        <div class="mb-4">
+          <span class="font-weight-bold mr-2">Prix:</span>
+          <span class="text-danger">{{ $produit->prix }} DH</span>
+        </div>
+        <div class="mb-4">
+          <span class="font-weight-bold mr-2">Quantite : {{ $produit->count_in_stock }}</span>
+        </div>
+        <button onClick="addToPanier({{ $produit->id_produit }})" class="btn btn-primary mr-2">
+          <i class="fas fa-shopping-cart mr-2"></i>
+          Ajouter au panier
+        </button>
+        <button class="btn btn-outline-primary">
+          <i class="far fa-heart mr-2"></i>
+          Aller au panier
+        </button>
+      </div>
+    </div>
   </div>
-</div>
-  </div>
 
 
 
-</div>
-
-
-</div>
 
 <div id="content"></div>
 

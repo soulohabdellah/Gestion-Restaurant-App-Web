@@ -17,6 +17,11 @@ use App\Http\Controllers\ProduitController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', [ProduitController::class, 'getProduits']);
+Route::get('/home', function () {
+    return view('home');
+});
+Route::get('/menu', [ProduitController::class, 'getProduits']);
 Route::get('/produit/{id}', [ProduitController::class, 'getProduit']);
+Route::get('/panier', [ProduitController::class, 'getPanier']);
+
 
