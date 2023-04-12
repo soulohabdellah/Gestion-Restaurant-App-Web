@@ -33,7 +33,7 @@
         <div class="mb-4">
           <span class="font-weight-bold mr-2">Quantite : {{ $produit->count_in_stock }}</span>
         </div>
-        <button onClick="addToPanier({{ $produit->id_produit }})" class="btn btn-primary mr-2">
+        <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}')" class="btn btn-primary w-100">Ajouter au panier</button>
           <i class="fas fa-shopping-cart mr-2"></i>
           Ajouter au panier
         </button>
@@ -53,34 +53,42 @@
 @include('components\footer')
 
 <script>
-  //localStorage.clear();
-  function goToPanier(){
-    
-  }
-  function addToPanier(idProduit) {
+
+
+  function addToPanier(idProduit, nomProduit,imgProduit) {
+    let quantite = 1;
     let panier = localStorage.getItem('panier');
     if (!panier) {
       panier = []; 
     } else {
       panier = JSON.parse(panier); 
     }
-    if (!panier.includes(idProduit)) { 
-      panier.push(idProduit); 
-      localStorage.setItem('panier', JSON.stringify(panier)); 
+    let produit = { id: idProduit, quantite: quantite,nom:nomProduit,image:imgProduit };
+    let index = panier.findIndex(p => p.id === idProduit);
+    if (index >= 0) { 
+     return;
+    } else { 
+      panier.push(produit); 
     }
-    let nbItems = panier.length;
-    modifierPanier(nbItems);
-  }
+ 
+    localStorage.setItem('panier', JSON.stringify(panier)); 
+console.log(panier);
+    modifierPanier();
+}
+
   
-  function modifierPanier(nbItems) {
+  function modifierPanier() {
+    let panier = localStorage.getItem('panier');
+    let nbItems = 0;
+    if (panier) {
+      nbItems = JSON.parse(panier).length;
+    }
     document.getElementById('nombreProduit').textContent = nbItems;
   }
   
-  let panier = localStorage.getItem('panier');
-  if (panier) {
-    let nbItems = JSON.parse(panier).length;
-    modifierPanier(nbItems);
-  }
+
+    modifierPanier();
+  
 </script>
 
 

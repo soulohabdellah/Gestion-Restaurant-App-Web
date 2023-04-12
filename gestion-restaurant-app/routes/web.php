@@ -24,4 +24,9 @@ Route::get('/menu', [ProduitController::class, 'getProduits']);
 Route::get('/produit/{id}', [ProduitController::class, 'getProduit']);
 Route::get('/panier', [ProduitController::class, 'getPanier']);
 
-
+Route::get('/gestion-categorie', [CategorieController::class, 'gestionCategorie']);
+Route::get('/gestion-client', [ClientController::class, 'gestionClient']);
+Route::get('/gestion-commande', [CommandeController::class, 'gestionCommande']);
+Route::get('/gestion-livreur', [LivreurController::class, 'gestionLivreur']);
+Route::get('/gestion-produit', [ProduitController::class, 'gestionProduit']);
+Route::get('/gestion-serveur', [ServeurController::class, 'gestionServeur']);
