@@ -22,4 +22,9 @@ class ProduitController extends Controller
         return view('panier')->with('produit', $listProduits);
       
     }
+    function gestionProduit(){
+        $listProduits= Produit::all();
+        return view('gestionProduit')->with('produit', $listProduits);
+      
+    }
 }

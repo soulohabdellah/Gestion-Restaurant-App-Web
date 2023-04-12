@@ -33,30 +33,24 @@ footer a {
     <thead>
       <tr>
         <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Telephone</th>
+        <th>Adresse</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>@johndoe</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane</td>
-        <td>Doe</td>
-        <td>@janedoe</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Mark</td>
-        <td>Smith</td>
-        <td>@marksmith</td>
-      </tr>
+          @foreach ($listClients as $client)
+                <tr>
+                    <td>{{ $client->id_client }}</td>
+                    <td>{{ $client->nom }}</td>
+                    <td>{{ $client->prenom }}</td>
+                    <td>{{ $client->email }}</td>
+                    <td>{{ $client->telephone }}</td>
+                    <td>{{ $client->adresse }}</td>
+                </tr>
+            @endforeach
     </tbody>
   </table>
 </div>

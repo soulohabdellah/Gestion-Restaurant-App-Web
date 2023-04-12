@@ -33,9 +33,10 @@ footer a {
     <thead>
       <tr>
         <th>#</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Username</th>
+        <th>Image</th>
+        <th>Nom</th>
+        <th>Description</th>
+
       </tr>
     </thead>
     <tbody>
