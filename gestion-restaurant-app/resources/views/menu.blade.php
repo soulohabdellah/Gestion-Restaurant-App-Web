@@ -58,7 +58,7 @@ footer a {
 
 <script>
 
-
+localStorage.clear();
   function addToPanier(idProduit, nomProduit,imgProduit,prixProduit) {
     let quantite = 1;
     let panier = localStorage.getItem('panier');

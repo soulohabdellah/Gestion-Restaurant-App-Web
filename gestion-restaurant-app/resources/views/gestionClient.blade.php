@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-
-    <meta charset="utf-8">
+ <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="..." crossorigin="anonymous" />
 
@@ -23,6 +22,14 @@ footer {
 }
 footer a {
   color: #fff;
+}
+td a i {
+  margin-right: 10px;
+   
+}
+td a{
+
+text-decoration: none;
 }
         </style>
   </head>
@@ -53,8 +60,14 @@ footer a {
                     <td>{{ $client->telephone }}</td>
                     <td>{{ $client->adresse }}</td>
                     <td>
+                    <a href="/delete-client">
                         <i class="fas fa-trash"></i>
+                    </a>
+                    <a href="/update-client">
+                        <i class="fas fa-edit"></i>                
+                    </a>
                     </td>
+                  
 
                 </tr>
             @endforeach

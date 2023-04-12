@@ -44,6 +44,7 @@ footer a {
 </div>
 
 <script>
+
   function afficherPanier() {
     let panier = localStorage.getItem('panier');
     let panierTableBody = document.getElementById('panierTableBody');
