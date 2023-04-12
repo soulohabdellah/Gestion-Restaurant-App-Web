@@ -39,27 +39,25 @@ footer a {
         <th>Email</th>
         <th>Telephone</th>
         <th>Date recrutement</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>@johndoe</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane</td>
-        <td>Doe</td>
-        <td>@janedoe</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Mark</td>
-        <td>Smith</td>
-        <td>@marksmith</td>
-      </tr>
+      @foreach ($listLivreurs as $livreur)
+                <tr>
+                    <td>{{ $livreur->id_livreur }}</td>
+                    <td>{{ $livreur->nom }}</td>
+                    <td>{{ $livreur->prenom }}</td>
+                    <td>{{ $livreur->CIN }}</td>
+                      <td>{{ $livreur->email }}</td>
+                    <td>{{ $livreur->telephone }}</td>
+                    <td>{{ $livreur->date_recrutement }}</td>
+                     <td>
+                    <span class="bi bi-pencil-square"></span>
+                    <span class="bi bi-trash"></span>
+                    </td>
+                </tr>
+            @endforeach
     </tbody>
   </table>
 </div>

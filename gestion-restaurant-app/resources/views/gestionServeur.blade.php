@@ -4,6 +4,8 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="..." crossorigin="anonymous" />
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-RcJf1QaFNJ60xLj+O+aG0m0ZdwidWbJ8dXzG+jLefc1MDzQxW8NhGgmC+1YnYnGX" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -39,27 +41,25 @@ footer a {
         <th>Email</th>
         <th>Telephone</th>
         <th>Date recrutement</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>John</td>
-        <td>Doe</td>
-        <td>@johndoe</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Jane</td>
-        <td>Doe</td>
-        <td>@janedoe</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>Mark</td>
-        <td>Smith</td>
-        <td>@marksmith</td>
-      </tr>
+      @foreach ($listServeurs as $serveur)
+                <tr>
+                    <td>{{ $serveur->id_serveur }}</td>
+                    <td>{{ $serveur->nom }}</td>
+                    <td>{{ $serveur->prenom }}</td>
+                    <td>{{ $serveur->CIN }}</td>
+                      <td>{{ $serveur->email }}</td>
+                    <td>{{ $serveur->telephone }}</td>
+                    <td>{{ $serveur->date_recrutement }}</td>
+                   <td>
+                    <span class="bi bi-pencil-square"></span>
+                    <i class="fa-solid fa-trash"></i>
+                    </td>
+                </tr>
+            @endforeach
     </tbody>
   </table>
 </div>

@@ -41,7 +41,7 @@ footer a {
                         <div class="card-body">
                         <a href="/produit/{{$produit->id_produit}}"><h5 class="card-title">{{ $produit->nom }}</h5></a>                            <p class="card-text">Prix : <strong>{{ $produit->prix }} DH </strong></p>
                             <p class="card-text">Quantité : {{ $produit->count_in_stock }}</p>
-                            <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}')" class="btn btn-primary w-100">Ajouter au panier</button>
+                            <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ footer a {
 <script>
 
 
-  function addToPanier(idProduit, nomProduit,imgProduit) {
+  function addToPanier(idProduit, nomProduit,imgProduit,prixProduit) {
     let quantite = 1;
     let panier = localStorage.getItem('panier');
     if (!panier) {
@@ -67,7 +67,7 @@ footer a {
     } else {
       panier = JSON.parse(panier); 
     }
-    let produit = { id: idProduit, quantite: quantite,nom:nomProduit,image:imgProduit };
+    let produit = { id: idProduit, quantite: quantite,nom:nomProduit,image:imgProduit ,prix:prixProduit};
     let index = panier.findIndex(p => p.id === idProduit);
     if (index >= 0) { 
      return;

@@ -11,10 +11,18 @@
 
     <title>Toha food</title>
     <style>
-        .custom-img-size {
+      .custom-img-size {
    height: 200px;
 }
-
+.navbar {
+  background-color: #1ac074;
+}
+footer {
+  background-color: #1ac074;
+}
+footer a {
+  color: #fff;
+}
         </style>
   </head>
   <body>

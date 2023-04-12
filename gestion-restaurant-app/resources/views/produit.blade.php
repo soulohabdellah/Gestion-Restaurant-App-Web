@@ -10,10 +10,18 @@
 
     <title>Toha food</title>
     <style>
-        .custom-img-size {
+       .custom-img-size {
    height: 200px;
 }
-
+.navbar {
+  background-color: #1ac074;
+}
+footer {
+  background-color: #1ac074;
+}
+footer a {
+  color: #fff;
+}
         </style>
   </head>
   <body>
@@ -33,11 +41,12 @@
         <div class="mb-4">
           <span class="font-weight-bold mr-2">Quantite : {{ $produit->count_in_stock }}</span>
         </div>
-        <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}')" class="btn btn-primary w-100">Ajouter au panier</button>
+                            <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
           <i class="fas fa-shopping-cart mr-2"></i>
-          Ajouter au panier
+    
         </button>
-        <button onClick="goToPanier()" class="btn btn-outline-primary">
+        </br>
+        <button onClick="goToPanier()" class="btn btn-outline-primary w-100">
           <i class="far fa-heart mr-2"></i>
           Aller au panier
         </button>
@@ -53,44 +62,47 @@
 @include('components\footer')
 
 <script>
-
-
-  function addToPanier(idProduit, nomProduit,imgProduit) {
-    let quantite = 1;
+  function afficherPanier() {
     let panier = localStorage.getItem('panier');
-    if (!panier) {
-      panier = []; 
-    } else {
-      panier = JSON.parse(panier); 
-    }
-    let produit = { id: idProduit, quantite: quantite,nom:nomProduit,image:imgProduit };
-    let index = panier.findIndex(p => p.id === idProduit);
-    if (index >= 0) { 
-     return;
-    } else { 
-      panier.push(produit); 
-    }
- 
-    localStorage.setItem('panier', JSON.stringify(panier)); 
-console.log(panier);
-    modifierPanier();
-}
-
-  
-  function modifierPanier() {
-    let panier = localStorage.getItem('panier');
-    let nbItems = 0;
+    let panierTableBody = document.getElementById('panierTableBody');
+    panierTableBody.innerHTML = '';
     if (panier) {
-      nbItems = JSON.parse(panier).length;
+      let produits = JSON.parse(panier);
+      produits.forEach(function(produit) {
+        let row = document.createElement('tr');
+        let imgCell = document.createElement('td');
+        let img = document.createElement('img');
+        img.src = produit.image;
+        img.style.width = '100px';
+        img.style.height = '100px';
+        imgCell.appendChild(img);
+        row.appendChild(imgCell);
+        let nomCell = document.createElement('td');
+        let nom = document.createTextNode(produit.nom);
+        nomCell.appendChild(nom);
+        row.appendChild(nomCell);
+        let quantiteCell = document.createElement('td');
+        let quantite = document.createTextNode(produit.quantite);
+        quantiteCell.appendChild(quantite);
+        row.appendChild(quantiteCell);
+        let prixCell = document.createElement('td');
+        let prix = document.createTextNode(produit.prix + ' DH');
+        prixCell.appendChild(prix);
+        row.appendChild(prixCell);
+        panierTableBody.appendChild(row);
+      });
+    } else {
+      let row = document.createElement('tr');
+      let messageCell = document.createElement('td');
+      let message = document.createTextNode('Le panier est vide.');
+      messageCell.appendChild(message);
+      row.appendChild(messageCell);
+      panierTableBody.appendChild(row);
     }
-    document.getElementById('nombreProduit').textContent = nbItems;
   }
   
-
-    modifierPanier();
-  
+  afficherPanier();
 </script>
-
 
 
 

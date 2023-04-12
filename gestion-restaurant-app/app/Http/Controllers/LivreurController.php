@@ -8,7 +8,7 @@ class LivreurController extends Controller
 {
     function gestionLivreur(){
         $listLivreurs= Livreur::all();
-        return view('gestionLivreur')->with('livreur', $listLivreurs);
+        return view('gestionLivreur')->with('listLivreurs', $listLivreurs);
       
     }
 }
