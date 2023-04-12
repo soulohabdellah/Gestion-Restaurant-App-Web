@@ -27,7 +27,14 @@ Route::get('/produit/{id}', [ProduitController::class, 'getProduit']);
 Route::get('/panier', [ProduitController::class, 'getPanier']);
 
 Route::get('/gestion-categorie', [CategorieController::class, 'gestionCategorie']);
+
+//gestion clients
 Route::get('/gestion-client', [ClientController::class, 'gestionClient']);
+Route::get('/delete-client/{id}', [ClientController::class, 'deleteClient']);
+Route::get('/update-client/{id}', [ClientController::class, 'updateClient']);
+Route::post('/ajouter-client', [ClientController::class, 'addClient']);
+
+
 Route::get('/gestion-commande', [CommandeController::class, 'gestionCommande']);
 Route::get('/gestion-livreur', [LivreurController::class, 'gestionLivreur']);
 Route::get('/gestion-produit', [ProduitController::class, 'gestionProduit']);

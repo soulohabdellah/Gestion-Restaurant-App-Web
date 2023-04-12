@@ -11,4 +11,17 @@ class ClientController extends Controller
         return view('gestionClient')->with('listClients', $listClients);
       
     }
+
+    public function deleteClient($id_client)
+    {
+        $client = Client::find($id_client);
+        
+        if (!$client) {
+            return redirect()->back()->with('error', 'Le client que vous essayez de supprimer n\'existe pas.');
+        }
+        
+        $client->delete();
+        
+        return redirect()->back()->with('success', 'Le client a été supprimé avec succès.');
+    }
 }

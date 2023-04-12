@@ -36,6 +36,12 @@ text-decoration: none;
   <body>
   @include('components\navbar')
 
+<a href="/ajouter-client">
+  <div class="d-flex justify-content-end">
+    <button class="btn btn-primary">Ajouter client</button>
+  </div>
+</a>
+
 
   <div class="table-responsive">
   <table class="table table-striped">
@@ -53,20 +59,20 @@ text-decoration: none;
     <tbody>
           @foreach ($listClients as $client)
                 <tr>
-                    <td>{{ $client->id_client }}</td>
+                    <td>{{ $client->id }}</td>
                     <td>{{ $client->nom }}</td>
                     <td>{{ $client->prenom }}</td>
                     <td>{{ $client->email }}</td>
                     <td>{{ $client->telephone }}</td>
                     <td>{{ $client->adresse }}</td>
                     <td>
-                    <a href="/delete-client">
-                        <i class="fas fa-trash"></i>
-                    </a>
-                    <a href="/update-client">
-                        <i class="fas fa-edit"></i>                
-                    </a>
-                    </td>
+                <a href="/delete-client/{{ $client->id }}">
+                    <i class="fas fa-trash"></i>
+                </a>
+                <a href="/update-client/{{ $client->id }}">
+                    <i class="fas fa-edit"></i>                
+                </a>
+            </td>
                   
 
                 </tr>
