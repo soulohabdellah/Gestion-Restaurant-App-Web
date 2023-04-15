@@ -41,7 +41,7 @@ footer a {
         <div class="mb-4">
           <span class="font-weight-bold mr-2">Quantite : {{ $produit->count_in_stock }}</span>
         </div>
-                            <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
+                            <button onClick="addToPanier('{{ $produit->id }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
           <i class="fas fa-shopping-cart mr-2"></i>
     
         </button>

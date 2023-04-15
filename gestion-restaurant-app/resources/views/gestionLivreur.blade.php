@@ -45,7 +45,7 @@ footer a {
     <tbody>
       @foreach ($listLivreurs as $livreur)
                 <tr>
-                    <td>{{ $livreur->id_livreur }}</td>
+                    <td>{{ $livreur->id }}</td>
                     <td>{{ $livreur->nom }}</td>
                     <td>{{ $livreur->prenom }}</td>
                     <td>{{ $livreur->CIN }}</td>

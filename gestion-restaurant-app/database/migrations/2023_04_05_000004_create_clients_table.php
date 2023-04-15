@@ -12,13 +12,19 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('statuts', function (Blueprint $table) {
-            $table->id('id_statut');
+{
+    Schema::create('clients', function (Blueprint $table) {
+            $table->id('id');
             $table->string('nom',15);
-            $table->timestamps();
-        });
-    }
+            $table->string('prenom',15);
+            $table->string('email',25)->unique();
+            $table->string('password',100);
+        $table->text('adresse');
+        $table->string('telephone',25);
+        $table->timestamps();
+    });
+}
+
 
     /**
      * Reverse the migrations.
@@ -27,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuts');
+        Schema::dropIfExists('clients');
     }
 };

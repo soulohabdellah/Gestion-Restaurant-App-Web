@@ -13,7 +13,7 @@ class ProduitController extends Controller
 
     }
     function getProduit($id_produit){
-        $produit = Produit::where('id_produit', $id_produit)->first();
+        $produit = Produit::find($id_produit);
         return view('produit')->with('produit', $produit);
       
     }

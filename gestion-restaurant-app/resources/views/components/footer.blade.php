@@ -18,16 +18,16 @@
       <div class="col-md-4 mb-4">
         <h4>Contactez-nous</h4>
         <ul class="list-unstyled">
-          <li><i class="bi bi-geo-alt"></i> Adresse: 123 Rue Principale, 12345 Ville, Pays</li>
-          <li><i class="bi bi-telephone"></i> Téléphone: (123) 456-7890</li>
-          <li><i class="bi bi-envelope"></i> Email: info@monentreprise.com</li>
+          <li><i class="bi bi-geo-alt"></i> Adresse: 123 Rue Mohamed V, Marrakech</li>
+          <li><i class="bi bi-telephone"></i> Téléphone: 0511917984</li>
+          <li><i class="bi bi-envelope"></i> Email: toha-food@gmail.com</li>
         </ul>
       </div>
     </div>
     <hr class="my-4">
     <div class="text-center">
       <p class="mb-0">Copyright © 2023.
-        <a href="#">Mon Entreprise</a>. Tous droits réservés.</p>
+        <a href="#">Toha Food</a>. Tous droits réservés.</p>
     </div>
   </div>
 </footer>

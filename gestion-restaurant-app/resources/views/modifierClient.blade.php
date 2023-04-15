@@ -1,8 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-
-    <meta charset="utf-8">
+ <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="..." crossorigin="anonymous" />
 
@@ -24,46 +23,38 @@ footer {
 footer a {
   color: #fff;
 }
+td a i {
+  margin-right: 10px;
+   
+}
+td a{
+
+text-decoration: none;
+}
         </style>
   </head>
   <body>
   @include('components\navbar')
 
-
-  <div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Nom</th>
-        <th>Prenom</th>
-        <th>CIN</th>
-        <th>Email</th>
-        <th>Telephone</th>
-        <th>Date recrutement</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      @foreach ($listServeurs as $serveur)
-                <tr>
-                    <td>{{ $serveur->id }}</td>
-                    <td>{{ $serveur->nom }}</td>
-                    <td>{{ $serveur->prenom }}</td>
-                    <td>{{ $serveur->CIN }}</td>
-                      <td>{{ $serveur->email }}</td>
-                    <td>{{ $serveur->telephone }}</td>
-                    <td>{{ $serveur->date_recrutement }}</td>
-                   <td>
-                    <span class="bi bi-pencil-square"></span>
-                    <i class="fa-solid fa-trash"></i>
-                    </td>
-                </tr>
-            @endforeach
-    </tbody>
-  </table>
+<form>
+<div class="mb-3">
+    <label class="form-label">Email address</label>
+    <input type="email" class="form-control" id="Email" aria-describedby="emailHelp" value="<?php echo $client->email; ?>">
 </div>
-
+<div class="mb-3">
+    <label  class="form-label">Nom</label>
+    <input type="text" class="form-control" id="Nom" aria-describedby="emailHelp" value="<?php echo $client->nom; ?>">
+</div>
+<div class="mb-3">
+    <label  class="form-label">Prenom</label>
+    <input type="text" class="form-control" id="Prenom" aria-describedby="emailHelp" value="<?php echo $client->prenom; ?>">
+</div>
+<div class="mb-3">
+    <label  class="form-label">Adresse</label>
+    <input type="text" class="form-control" id="Adresse" aria-describedby="emailHelp" value="<?php echo $client->adresse; ?>">
+</div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 @include('components\footer')
 

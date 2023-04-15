@@ -39,9 +39,9 @@ footer a {
                     <div class="card h-100">
                         <img src="{{ $produit->image }}" class="card-img-top custom-img-size" alt="...">
                         <div class="card-body">
-                        <a href="/produit/{{$produit->id_produit}}"><h5 class="card-title">{{ $produit->nom }}</h5></a>                            <p class="card-text">Prix : <strong>{{ $produit->prix }} DH </strong></p>
+                        <a href="/produit/{{$produit->id}}"><h5 class="card-title">{{ $produit->nom }}</h5></a>                            <p class="card-text">Prix : <strong>{{ $produit->prix }} DH </strong></p>
                             <p class="card-text">Quantité : {{ $produit->count_in_stock }}</p>
-                            <button onClick="addToPanier('{{ $produit->id_produit }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
+                            <button onClick="addToPanier('{{ $produit->id }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@ footer a {
 
 <script>
 
-localStorage.clear();
+
   function addToPanier(idProduit, nomProduit,imgProduit,prixProduit) {
     let quantite = 1;
     let panier = localStorage.getItem('panier');

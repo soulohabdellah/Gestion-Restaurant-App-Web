@@ -11,6 +11,8 @@
 
     <title>Toha food</title>
     <style>
+
+
       .custom-img-size {
    height: 200px;
 }
@@ -28,6 +30,69 @@ footer a {
   <body>
   @include('components\navbar')
 
+<header class="bg-light py-5">
+    <div class="container text-center">
+      <h1 class="fw-bolder mb-4">Welcome to Toha Food</h1>
+      <p class="lead mb-0">For the love of delicious food</p>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="fw-bolder mb-4">Nos Menu</h2>
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <div class="card">
+<img src="https://www.francebleu.fr/s3/cruiser-production/2019/08/71080297-32f4-49b3-8d2b-33ba080d1c30/1200x680_gettyimages-1146906219.jpg" class="card-img-top custom-img-size" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Tacos Mexicain</h5>
+              <p class="card-text">Un taco est un antojito de la cuisine mexicaine qui se compose d'une tortilla de maïs repliée ou enroulée sur elle-même contenant presque toujours une garniture le plus souvent à base de viande, de sauce, d'oignon et de coriandre fraiche hachée.</p>
+              <a href="#" class="btn btn-primary">Ajouter au panier</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 mb-4">
+          <div class="card">
+<img src="https://www.cortesecompany.com/wp-content/uploads/2019/01/Pasticcio-Viande-480x380.jpeg" class="card-img-top custom-img-size" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">Pasticcio Jambon</h5>
+              <p class="card-text">Le pastítsio est un plat de la cuisine grecque, chypriote et méditerranéenne, composé de pâtes, de viande hachée, le tout étant nappé de sauce béchamel. Ce plat est cuit au four. Il s'agit d'une variante du plat italien, le pasticcio di pasta</p>
+              <a href="#" class="btn btn-primary">Ajouter au panier</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="order" id="order">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 order-md-2">
+        <img src="https://res.cloudinary.com/souloh-services/image/upload/v1681391289/Capture_d_%C3%A9cran_2023-04-13_130614_oacopt.png" alt="food image" class="img-fluid">
+      </div>
+      <div class="col-md-6 order-md-1">
+        <h2 class="mb-3">Commander maintenenant</h2>
+        <p class="lead mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <form>
+          <div class="mb-3">
+            <label for="food-item" class="form-label">Produit</label>
+            <input type="text" class="form-control" id="food-item" placeholder="Enter food item">
+          </div>
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantite</label>
+            <input type="number" class="form-control" id="quantity" placeholder="Enter quantity">
+          </div>
+          <div class="mb-3">
+            <label for="delivery-date" class="form-label">Date de livraison</label>
+            <input type="date" class="form-control" id="delivery-date">
+          </div>
+          <button type="submit" class="btn btn-primary">Commander</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 
 
  

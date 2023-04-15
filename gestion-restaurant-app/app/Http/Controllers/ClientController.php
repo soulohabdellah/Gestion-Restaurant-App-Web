@@ -24,4 +24,16 @@ class ClientController extends Controller
         
         return redirect()->back()->with('success', 'Le client a été supprimé avec succès.');
     }
+
+    public function updateClient($id_client)
+    {
+        $client = Client::find($id_client);
+        
+        if (!$client) {
+            return redirect()->back()->with('error', 'Le client que vous essayez de supprimer n\'existe pas.');
+        }
+
+        
+        return view('modifierClient')->with('client',  $client);
+    }
 }
