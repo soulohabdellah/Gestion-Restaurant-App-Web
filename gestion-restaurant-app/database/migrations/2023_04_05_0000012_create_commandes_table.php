@@ -19,19 +19,19 @@ return new class extends Migration
             $table->float('prix_total');
             $table->string('type', 15);
             $table->unsignedBigInteger('id_client');
-            //$table->foreign('id_client')->references('id')->on('clients');
+            $table->foreign('id_client')->references('id')->on('clients');
     
             $table->unsignedBigInteger('id_serveur')->nullable();
-            //$table->foreign('id_serveur')->references('id')->on('serveurs');
+            $table->foreign('id_serveur')->references('id')->on('serveurs');
     
             $table->unsignedBigInteger('id_livreur')->nullable();
-           // $table->foreign('id_livreur')->references('id')->on('livreurs');
+            $table->foreign('id_livreur')->references('id')->on('livreurs');
     
             $table->unsignedBigInteger('id_statut');
-            //$table->foreign('id_statut')->references('id')->on('statuts');
+            $table->foreign('id_statut')->references('id')->on('statuts');
     
             $table->unsignedBigInteger('id_type');
-            //$table->foreign('id_type')->references('id')->on('types');
+            $table->foreign('id_type')->references('id')->on('types');
     
             $table->timestamps();
         });

@@ -96,6 +96,7 @@ return [
     */
 
     'fallback_locale' => 'en',
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -153,12 +154,14 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+   
 
     'providers' => [
 
         /*
          * Laravel Framework Service Providers...
          */
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -196,6 +199,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
     ],
+    
 
     /*
     |--------------------------------------------------------------------------
@@ -209,7 +213,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
     ])->toArray(),
 
 ];

@@ -11,16 +11,23 @@ return new class extends Migration
      *
      * @return void
      */
+    
     public function up()
     {
         Schema::create('produits', function (Blueprint $table) {
             $table->id('id');
             $table->string('nom',50);
-            $table->text('description');      
+            $table->text('description');     
+            $table->text('image');   
             $table->float('prix');
             $table->integer('count_in_stock');
             $table->unsignedBigInteger('id_categorie');
             $table->foreign('id_categorie')->references('id')->on('categories');
+            $table->boolean('frite'); 
+            $table->boolean('boisson'); 
+            $table->boolean('sauce');
+            $table->integer('temp');         
+
             $table->timestamps();
         });
     }

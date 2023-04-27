@@ -1,18 +1,18 @@
-</br></br></br>
+<br/><br/><br/>
 <footer class="bg-success text-light py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-4 mb-4">
         <h4>À propos de nous</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin euismod, felis at aliquet bibendum, sem diam tempus ante, nec tincidunt quam nisl eu augue.</p>
+        <p> Pour vos événements spéciaux à domicile, notre restaurant vous offre les services de son chef et de ses équipes pour rendre votre événement le plus agréable possible, une possibilité d’un repas à domicile avec le chef Herve, ou des plats à importernisl eu augue.</p>
       </div>
       <div class="col-md-4 mb-4">
         <h4>Nos liens utiles</h4>
         <ul class="list-unstyled">
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#">Services</a></li>
-          <li><a href="#">À propos</a></li>
-          <li><a href="#">Blog</a></li>
+          <li><a href="/home">Accueil</a></li>
+          <li><a href="/a-propos">Services</a></li>
+          <li><a href="/a-propos">À propos</a></li>
+          <li><a href="/menu">Menu</a></li>
         </ul>
       </div>
       <div class="col-md-4 mb-4">

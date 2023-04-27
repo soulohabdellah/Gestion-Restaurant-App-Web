@@ -36,20 +36,17 @@ footer a {
         <p class="text-muted mb-4">{{ $produit->description }}</p>
         <div class="mb-4">
           <span class="font-weight-bold mr-2">Prix:</span>
-          <span class="text-danger">{{ $produit->prix }} DH</span>
+          <span class="text-danger"><strong>{{ $produit->prix }} DH </strong></span>
         </div>
-        <div class="mb-4">
-          <span class="font-weight-bold mr-2">Quantite : {{ $produit->count_in_stock }}</span>
-        </div>
+
                             <button onClick="addToPanier('{{ $produit->id }}','{{ $produit->nom }}','{{ $produit->image }}','{{ $produit->prix }}')" class="btn btn-primary w-100">Ajouter au panier</button>
           <i class="fas fa-shopping-cart mr-2"></i>
     
         </button>
-        </br>
-        <button onClick="goToPanier()" class="btn btn-outline-primary w-100">
-          <i class="far fa-heart mr-2"></i>
-          Aller au panier
-        </button>
+    <a class="btn btn-outline-primary w-100" href="/panier">
+      Aller au panier 
+    </a >
+       
       </div>
     </div>
   </div>
@@ -62,59 +59,43 @@ footer a {
 @include('components\footer')
 
 <script>
-  function afficherPanier() {
+
+
+  function addToPanier(idProduit, nomProduit,imgProduit,prixProduit) {
+    let quantite = 1;
     let panier = localStorage.getItem('panier');
-    let panierTableBody = document.getElementById('panierTableBody');
-    panierTableBody.innerHTML = '';
-    if (panier) {
-      let produits = JSON.parse(panier);
-      produits.forEach(function(produit) {
-        let row = document.createElement('tr');
-        let imgCell = document.createElement('td');
-        let img = document.createElement('img');
-        img.src = produit.image;
-        img.style.width = '100px';
-        img.style.height = '100px';
-        imgCell.appendChild(img);
-        row.appendChild(imgCell);
-        let nomCell = document.createElement('td');
-        let nom = document.createTextNode(produit.nom);
-        nomCell.appendChild(nom);
-        row.appendChild(nomCell);
-        let quantiteCell = document.createElement('td');
-        let quantite = document.createTextNode(produit.quantite);
-        quantiteCell.appendChild(quantite);
-        row.appendChild(quantiteCell);
-        let prixCell = document.createElement('td');
-        let prix = document.createTextNode(produit.prix + ' DH');
-        prixCell.appendChild(prix);
-        row.appendChild(prixCell);
-        panierTableBody.appendChild(row);
-      });
+    if (!panier) {
+      panier = []; 
     } else {
-      let row = document.createElement('tr');
-      let messageCell = document.createElement('td');
-      let message = document.createTextNode('Le panier est vide.');
-      messageCell.appendChild(message);
-      row.appendChild(messageCell);
-      panierTableBody.appendChild(row);
+      panier = JSON.parse(panier); 
     }
+    let produit = { id: idProduit, quantite: quantite,nom:nomProduit,image:imgProduit ,prix:prixProduit};
+    let index = panier.findIndex(p => p.id === idProduit);
+    if (index >= 0) { 
+     return;
+    } else { 
+      panier.push(produit); 
+    }
+    localStorage.setItem('panier', JSON.stringify(panier)); 
+
+    modifierPanier();
+}
+
+let panier = localStorage.getItem('panier');
+console.log(panier);
+  function modifierPanier() {
+    let panier = localStorage.getItem('panier');
+    let nbItems = 0;
+    if (panier) {
+      nbItems = JSON.parse(panier).length;
+    }
+    document.getElementById('nombreProduit').textContent = nbItems;
   }
+
+    modifierPanier();
   
-  afficherPanier();
 </script>
-
-
-
-
-
-
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-  
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
 
