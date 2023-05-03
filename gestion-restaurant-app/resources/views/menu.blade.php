@@ -75,7 +75,10 @@ footer a {
             @endforeach
         </div>
     @else
-        <p>Aucun produit disponible pour le moment.</p>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <i class="bi bi-check-circle-fill me-2"></i>Aucun produit disponible pour le moment.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
     @endif
 </div>
 

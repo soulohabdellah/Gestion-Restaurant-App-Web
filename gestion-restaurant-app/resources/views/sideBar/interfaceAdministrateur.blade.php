@@ -11,7 +11,7 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link text-white" href="/gestion-commande" onclick="setActiveLink('gestion-commande-link')" id="gestion-commande-link">
+      <a class="nav-link text-white" href="/commande-administrateur" onclick="setActiveLink('gestion-commande-link')" id="gestion-commande-link">
         <i class="bi bi-cart-fill me-2"></i>Commande
       </a>
     </li>

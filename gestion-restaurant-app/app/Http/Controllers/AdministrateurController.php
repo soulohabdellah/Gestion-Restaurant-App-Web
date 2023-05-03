@@ -7,23 +7,26 @@ use App\Models\Administrateur;
 
 class AdministrateurController extends Controller
 {
-    function isConnected(){
-       
-        if(session('id_administrateur')){
-            return true;
-        }else{
-            return false;
-        }
-    }
+    
+   //Deconnexion d'administrateur
     public function getDeconnexion()
     {
+        if(!$this->isConnectedAdministrateur()){
+            return view('authentifications/authentificationAdministrateur');
+        }else{
         session()->forget('id_administrateur');
         session()->forget('name_administrateur');
-
-
-        return view('authentifications/authentificationClient');
+        return view('authentifications/authentificationAdministrateur');
+        }
     }
+    ////Modifier les information de l'administrateur
     function updateSetting(Request $request){
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
+
         $id_administrateur = session('id_administrateur');
         $administrateur = Administrateur::find($id_administrateur);
         $administrateur->email = $request->Email;
@@ -33,26 +36,42 @@ class AdministrateurController extends Controller
         $administrateur->save();
         $message="Bien modifié";
         return view('settings/settingAdministrateur')->with(['administrateur' => $administrateur, 'message' => $message]);
+        }
     }
+    //Affichage de interface de setting
     public function getSetting(){
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
+
         $id_administrateur = session('id_administrateur');
         $administrateur = Administrateur::find($id_administrateur);
         return view('settings/settingAdministrateur')->with('administrateur', $administrateur);
+        }
 
     }
     public function getAuthentificationAdministrateur(){
         return view('authentifications/authentificationAdministrateur');
 
     }
+    ////Affichage de dashboard administrateur
     public function getDashboard(){
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         return view('dashboards/dashboardAdmin');
+        }
 
     }
+    ////Authentification administrateur
     public function verifierAdministrateur(Request $request)
     {
         $emailForm = $request->Email;
         $passwordForm = $request->Password;
-    
         $administrateur = Administrateur::where('email', $emailForm)->first();
     
         if ($administrateur && password_verify($passwordForm, $administrateur->password)) {

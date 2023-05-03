@@ -9,6 +9,7 @@ use App\Models\Categorie;
 
 class ProduitController extends Controller
 {
+    ////Recherche des produits par client soit par categorie ou pa nom
     public function searchClient(Request $request){
         if($request->input('categorie')){
             $listProduits = Produit::where('id_categorie', $request->input('categorie'))->get();
@@ -25,8 +26,14 @@ class ProduitController extends Controller
         ]);
 
     }
+    ////Affichage modification produit a l'admin
     public function updateProduit($id_produit)
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         $produit = Produit::find($id_produit);
         $listCategorie= Categorie::all();
         if (!$produit) {
@@ -38,9 +45,15 @@ class ProduitController extends Controller
             'listCategorie' => $listCategorie
         ]);
     }
-
+    }
+////Suppression produit par administrateur
     public function deleteProduit($id_produit)
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         $produit = Produit::find($id_produit);
         
         if (!$produit) {
@@ -51,9 +64,15 @@ class ProduitController extends Controller
         
         return redirect()->back()->with('success', 'Le produit a été supprimé avec succès.');
     }
-
+}
+////Modifier les attributs du produit par  administrateur
     public function modifyProduit(Request $request, $id_produit)
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
 
         $produit = Produit::find($id_produit);
         $produit->nom = $request->Nom;
@@ -74,9 +93,15 @@ class ProduitController extends Controller
         $listProduits = Produit::all();
         return view('gestionProduits/gestionProduit')->with('listProduits', $listProduits);
     }
-
+}
+////Creer produit par administrateur
     function creerProduit(Request $request)
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         $produit = new Produit;
         $produit->nom = $request->Nom;
         $produit->description = $request->Description;
@@ -98,12 +123,20 @@ class ProduitController extends Controller
         $listProduits = Produit::all();
         return view('gestionProduits/gestionProduit')->with('listProduits', $listProduits);
     }
-
+    }
+////Affichage de page de ajouter produit au administrateur
     function addProduit()
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         $listCategorie = Categorie::all();
         return view('gestionProduits/ajouterProduit')->with('listCategorie', $listCategorie);
+        }
     }
+////Affichage la liste des produits au client (menu)
     function getProduits(Request $request){
         if($request->input('categorie')){
             $listProduits = Produit::where('id_categorie', $request->input('categorie'))->get();
@@ -121,19 +154,27 @@ class ProduitController extends Controller
 
 
     }
+    ////Affichage details produit au client
     function getProduit($id_produit){
         $produit = Produit::find($id_produit);
         return view('produit')->with('produit', $produit);
       
     }
+    ////Affichage panier au client
     function getPanier(){
         $listProduits= Produit::all();
         return view('panier')->with('produit', $listProduits);
       
     }
+    ////Affichage gestion produit au administrateur
     function gestionProduit(){
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         $listProduits= Produit::all();
         return view('gestionProduits/gestionProduit')->with('listProduits', $listProduits);
-      
+        }     
     }
 }

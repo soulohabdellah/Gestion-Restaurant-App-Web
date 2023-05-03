@@ -63,6 +63,7 @@
                  <th>Type</th>
                  <th>Prix total</th>
                  <th>Actions</th>
+                 <th>Payement</th>
               </tr>
            </thead>
            <tbody>
@@ -74,9 +75,32 @@
                     <td>{{ $commande->type->nom }}</td>
                     <td>{{ $commande->prix_total }}DH</td>
                     <td>
+
                        <a href="/consulte-commande/{{ $commande->id }}">
                           <i class="fas fa-eye"></i> 
                        </a>
+                    </td>
+                    <td>
+                     @if($commande->payee==false)
+                       <form method="post" action="https://www.sandbox.paypal.com/cgi-bin/webscr">
+                        <input type="hidden" value="soulohAbdellah2020@business.example.com" name="business">
+                        <input type="hidden" value="_xclick" name="cmd">
+                        <input type="hidden" value="AM Test Item" name="item_name">
+          
+                          <input type="hidden" value="{{ $commande->prix_total /10 }}" name="amount">
+          
+                        <input type="hidden" name="currency_code" value="USD">
+                        <input type="hidden" value="item_number" name="item_number">
+                        <input type="hidden" name="return" value="http://127.0.0.1:8000/commande-payer/{{ $commande->id }}">
+                        <input type="image" src="https://www.sandbox.paypal.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" src="https://www.sandbox.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                      </form>
+                      @else
+                      <strong>
+                     
+                      </strong>
+
+                      @endif
                     </td>
                  </tr>
               @endforeach

@@ -16,6 +16,14 @@ Route::get('/home', function () {
 Route::get('/a-propos', function () {
     return view('apropos');
 });
+//Payement client 
+Route::get('/commande-payer/{id}', [CommandeController::class, 'payerCommande']);
+
+//Gestion commande administrateur
+Route::get('/commande-administrateur', [CommandeController::class, 'getAdministrateurCommandes']);
+Route::get('consulte-commande-administrateur/{id}', [CommandeController::class, 'getAdministrateurCommande']);
+Route::get('/update-commande-administrateur/{id}', [CommandeController::class, 'updateAdministrateurCommandes']);
+Route::post('/modify-commande-administrateur/{id}', [CommandeController::class, 'modifyAdministrateurCommandes']);
 //Gestion commande serveur
 Route::get('/commande-serveur', [CommandeController::class, 'getServeurCommandes']);
 Route::get('consulte-commande-serveur/{id}', [CommandeController::class, 'getServeurCommande']);

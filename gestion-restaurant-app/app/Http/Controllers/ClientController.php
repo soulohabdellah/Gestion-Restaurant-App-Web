@@ -6,25 +6,24 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 class ClientController extends Controller
 {
-    function isConnected(){
-       
-        if(session('id_client')){
-            return true;
-        }else{
-            return false;
-        }
-    }
+    ////Deconnexion client
     public function getDeconnexion()
     {
+        if(!$this->isConnectedClient()){
+            return view('authentifications/authentificationClient');
+
+        }else{
+
         session()->forget('id_client');
         session()->forget('nom_client');
         session()->forget('prenom_client');
 
         return view('authentifications/authentificationClient');
+        }
     }
+    ////Creation de compte client par client
     public function inscriptionClient(Request $request)
     {
-
         $client = new Client;
         $client->email = $request->Email;
         $client->nom = $request->Nom;
@@ -38,8 +37,13 @@ class ClientController extends Controller
         return view('dashboards/dashboardClient');
 
     }
-    
+    ////Changer les informations de client
     function updateSetting(Request $request){
+        if(!$this->isConnectedClient()){
+
+            return view('authentifications/authentificationClient');
+
+        }else{
         $id_client = session('id_client');
         $client = Client::find($id_client);
         $client->email = $request->Email;
@@ -51,28 +55,47 @@ class ClientController extends Controller
         $client->save();
         $message="Bien modifié";
         return view('settings/settingClient')->with(['client' => $client, 'message' => $message]);
-
-
+        }
     }
+    ////Afficher la page de setting au client
     public function getSetting(){
-        if($this->isConnected()){
+        if(!$this->isConnectedClient()){
+
+            return view('authentifications/authentificationClient');
+
+        }else{        
         $id_client = session('id_client');
         $client = Client::find($id_client);
         return view('settings/settingClient')->with('client', $client);
-        }else{
-            return redirect('authentification-client');
-        }}
-
-    
+        }
+        }
+    ////Afficher le dashboard client au client
     public function getDashboard(){
+        if(!$this->isConnectedClient()){
+
+            return view('authentifications/authentificationClient');
+
+        }else{
         return view('dashboards/dashboardClient');
+        }
 
     }
+    ////Afficher la page de ajouter client au administrateur
     function addClient(){
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
+
         return view('gestionClients/ajouterClient');
+        }
     }
+    /////Creation de client par administrateur
     public function creerClient(Request $request)
-    {
+    {   if(!$this->isConnectedAdministrateur()){
+        return view('authentifications/authentificationAdministrateur');
+    }else{
 
         $client = new Client;
         $client->email = $request->Email;
@@ -85,9 +108,15 @@ class ClientController extends Controller
         $listClients= Client::all();
         return view('gestionClients/gestionClient')->with('listClients', $listClients);
     }
+    }
+    ////Changer les informations de client par administrateur
     public function modifyClient(Request $request,$id_client)
     {
+        if(!$this->isConnectedAdministrateur()){
 
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
         $client = Client::find($id_client);
         $client->email = $request->Email;
         $client->nom = $request->Nom;
@@ -98,16 +127,30 @@ class ClientController extends Controller
         $client->save();
         $listClients= Client::all();
         return view('gestionClients/gestionClient')->with('listClients', $listClients);
+        }
     }
-
+////Afficher la page de gestion client au administrateur
     public function gestionClient(){
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
+
         $listClients= Client::all();
         return view('gestionClients/gestionClient')->with('listClients', $listClients);
+        }
       
     }
-
+////Supprimer client par admin
     public function deleteClient($id_client)
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
+
         $client = Client::find($id_client);
         
         if (!$client) {
@@ -118,9 +161,16 @@ class ClientController extends Controller
         
         return redirect()->back()->with('success', 'Le client a été supprimé avec succès.');
     }
-
+    }
+////Afficher la page de modification client par administrateur
     public function updateClient($id_client)
     {
+        if(!$this->isConnectedAdministrateur()){
+
+            return view('authentifications/authentificationAdministrateur');
+
+        }else{
+
         $client = Client::find($id_client);
         
         if (!$client) {
@@ -130,15 +180,18 @@ class ClientController extends Controller
         
         return view('gestionClients/modifierClient')->with('client',  $client);
     }
-
+    }
+////La page d'authentification des clients
     public function getAuthentificationClient(){
         return view('authentifications/authentificationClient');
 
     }
+////La page de inscription pour client
     public function getCreateCompte(){
         return view('authentifications/creerCompteClient');
 
     }
+////Verification authentification client
     public function verifierClient(Request $request)
     {
         $emailForm = $request->Email;

@@ -47,7 +47,6 @@ footer a {
               </tr>
             </thead>
             <tbody id="panierTableBody">
-              <!-- Le contenu du tableau sera généré dynamiquement ici -->
             </tbody>
           </table>
         </div>

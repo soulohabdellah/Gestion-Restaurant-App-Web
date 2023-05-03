@@ -9,6 +9,7 @@
 
     <title>Toha food</title>
     <style>
+
         .custom-img-size {
    height: 200px;
 }
@@ -16,10 +17,14 @@
   background-color: #1ac074;
 }
 footer {
+  height: 100%;
   background-color: #1ac074;
 }
 footer a {
   color: #fff;
+}
+.container{
+  min-height: 500px;
 }
         </style>
   </head>
@@ -48,6 +53,7 @@ footer a {
 
   let panier = localStorage.getItem('panier');
   panier = JSON.parse(panier);
+
   function modifierPanier() {
 
     let nbItems = 0;
@@ -56,6 +62,7 @@ footer a {
     }
     document.getElementById('nombreProduit').textContent = nbItems;
   }
+  
   modifierPanier();
   let tbody = document.getElementById('panierTableBody');
   function renderCart() {

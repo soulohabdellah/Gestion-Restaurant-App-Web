@@ -49,32 +49,41 @@ background-color: #18A054;
     @include('sideBar/interfaceAdministrateur')
 
     <div class="main">
+        <h1>Contenu de commande</h1>
+     
 
-        <div class="d-flex justify-content-center align-items-center vh-100">
-            <div class="container">
-              <h1>Modifier commande : {{$commande->id}}</h1>
-         
-         
-      <form  action="/modify-commande-administrateur/{{ $commande->id }}" class="was-validated" action="/creer-produit" method="POST">
-          @csrf
-      
-      <div class="mb-3">
-        <label for="categorie" class="form-label">Statut</label>
-                      <select class="form-select" id="statut" name="statut">
-                        @foreach ($listStatuts as $statut)
-                              <option value="{{ $statut->id }}">{{ $statut->nom }}</option>
-                          @endforeach
-                      </select>
-      </div>
+     
+       <div class="table-responsive">
+        <table class="table table-striped">
+           <thead>
+              <tr>
+                 <th>#</th>
+                 <th>Produit</th>
+                 <th>Prix unitaire</th>
+                 <th>Quantite</th>
+                 <th>Prix Item</th>
+          
+              </tr>
+           </thead>
+           <tbody>
+              @foreach ($listItems as $item)
+                 <tr>
+                    <td>{{ $item->id }}</td>            
+                    <td>{{ $item->produit->nom }}</td>
+                    <td>{{ $item->produit->prix }} DH</td>
+                    <td>{{ $item->quantite }}</td>
+                    <td>{{ $item->prix_item }}DH</td>
+                  
+                 </tr>
+              @endforeach
+           </tbody>
+        </table>
+     </div>
+     
 
-      
-        <button type="submit" id="ajouter-btn"class="btn btn-primary">Modifier</button>
-      </form>
-        </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+    </body>
 </html>
 <html>

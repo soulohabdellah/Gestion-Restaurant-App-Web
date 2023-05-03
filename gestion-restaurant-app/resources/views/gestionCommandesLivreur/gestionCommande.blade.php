@@ -67,6 +67,7 @@
                  <th>Adresse</th>
                  <th>Statut</th>
                  <th>Prix total</th>
+                 <th>Payee</th>
                  <th>Actions</th>
               </tr>
            </thead>
@@ -80,6 +81,14 @@
                     <td>{{ $commande->client->adresse }}</td>
                     <td>{{ $commande->statut->nom }}</td>
                     <td>{{ $commande->prix_total }}DH</td>
+                    <td>
+                     @if ($commande->payee==true)
+                     <p class="text-success">Oui</p>
+
+                     @else
+                     <p class="text-danger">Non</p>
+                     @endif
+                    </td>
                     <td>
                        <a href="/consulte-commande-livreur/{{ $commande->id }}">
                           <i class="fas fa-eye"></i> 
