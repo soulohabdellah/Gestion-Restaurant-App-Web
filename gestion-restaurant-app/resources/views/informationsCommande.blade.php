@@ -16,10 +16,18 @@
   background-color: #1ac074;
 }
 footer {
+  height: 100%;
   background-color: #1ac074;
 }
 footer a {
   color: #fff;
+}
+footer {
+
+  background-color: #1ac074;
+}
+.container{
+  min-height: 500px;
 }
         </style>
   </head>
@@ -57,7 +65,7 @@ footer a {
             <h3 class="card-title">Informations de commande</h3>
             <div class="row">
                 <div class="col-4">
-                    <p class="card-text"><strong>Nombre d'elements</strong></p>
+                    <p class="card-text"><strong>Nombre d'elements :</strong></p>
                 </div>
                 <div class="col">
                     <p id="nombre"class="card-text">0</p>
@@ -65,7 +73,7 @@ footer a {
             </div>
             <div class="row">
                 <div class="col-4">
-                    <p class="card-text"><strong>Quantite</strong></p>
+                    <p class="card-text"><strong>Quantite :</strong></p>
                 </div>
                 <div class="col">
                     <p id="quantite"class="card-text">0</p>
@@ -73,7 +81,7 @@ footer a {
             </div>
             <div class="row">
                 <div class="col-4">
-                    <p class="card-text"><strong>Prix Total</strong></p>
+                    <p class="card-text"><strong>Prix Total (DH) :</strong></p>
                 </div>
                 <div class="col">
                     <p id="prix"class="card-text">0</p>

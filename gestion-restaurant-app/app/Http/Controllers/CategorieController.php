@@ -80,7 +80,7 @@ class CategorieController extends Controller
         }
       
     }
-    ////Suupression de categorie par administrateur
+    ////Supression de categorie par administrateur
     public function deleteCategorie($id_categorie)
     {
         if(!$this->isConnectedAdministrateur()){

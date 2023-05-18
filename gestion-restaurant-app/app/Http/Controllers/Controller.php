@@ -36,7 +36,7 @@ class Controller extends BaseController
     }
     function isConnectedServeur(){
        
-        if(session('id_client')){
+        if(session('id_serveur')){
             return true;
         }else{
             return false;
